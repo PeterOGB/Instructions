@@ -11,8 +11,48 @@ code {
   font-size: 105%;
 }
 </style>
+<style>
+/* Switch numbering on by adding class "countheads" to h1 */
+/* Prevent numbering for a single heading via class "nocount" */
+  
+body {
+    counter-reset: h1counter;
+}
+.countheads ~ h1:before {
+    content: counter(h1counter) ".\0000a0\0000a0";
+    counter-increment: h1counter;
+}         
+
+h1 {
+    counter-reset: h2counter;
+}
+ 
+.countheads ~ h2:before {
+    content: counter(h1counter) "." counter(h2counter) ".\0000a0\0000a0";
+    counter-increment: h2counter;
+}
+
+h2 {
+    counter-reset: h3counter;
+}
+ 
+.countheads ~ h3:before {
+    content: counter(h1counter) "." counter(h2counter) "." counter(h3counter) ".\0000a0\0000a0";
+    counter-increment: h3counter;
+}
+
+h3 {
+    counter-reset: h4counter;
+}
+ 
+.countheads ~ h4:before {
+    content: counter(h1counter) "." counter(h2counter) "." counter(h3counter) "." counter(h4counter) ".\0000a0\0000a0";
+    counter-increment: h4counter;
+}
+ </style>
 </head>
 <body>
+<h1 class="countheads"></h1>
 <img src="NE0004.png" width="100%" height="100%" alt="">
 <font size="15"><div style="text-align: center;">Paper Less Tape Station GUI Version 4 User Guide</div></font>
 <h1>Introduction</h1>

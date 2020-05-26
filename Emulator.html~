@@ -79,7 +79,7 @@ sudo make install<br>
 sudo ldconfig<br>
 </code>
 
-<h2>Getting the emulator code from github</h2>
+<h2>Building the emulator code from github</h2>
 
 <p>The 803 Emulator is hosted on <a href="https://github.com/PeterOGB/3D803" target="github">github</a>.
  </p>
