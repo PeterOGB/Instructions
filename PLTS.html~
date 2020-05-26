@@ -32,44 +32,36 @@ and then uploaded into the virtual second tape reader. Likewise output to the te
 
 <h1>Installing the PLTS GUI</h1>
 
-<h2>Getting the code from github</h2>
+<h2>Installing and Building the dependencies</h2>    
 
-<p>The PLTS gui is hosted on <a href="https://github.com/PeterOGB/PLTS4" target="github">github</a>  and the code can be downloaded either as a "zip" file or the repository canbe cloned  
-using the command "git clone https://github.com/PeterOGB/PLTS4.git"</p>
+<p>There are a number of tools and libaries that are needed to build the emulator application.</p>
 
-<h2>Building the application</h2>    
-
-<h3>Dependencies</h3>
-    
-<p>The development versions of the following libraries need to be installed to build the emulator.</p>
-<table border bgcolor="#FFFFFF">
-<tr><td>Library</td><td>Package Name</td></tr>
-<tr><td>Gtk 3</td><td>gtk+-3.0-dev</td></tr>
-</table> 	
-
-<p>The package names apply for Debian derived distributions.</p>
-<p>Also the "cmake" application is needed. </p>   
-    
-Run<br>
+<p>If you don't already have a C compiler installed on your system, add the 
+"build-essentials" package to the command below.</p>
+ 
+<p>
 <code>sudo apt install gtk+-3.0-dev cmake
-</code>
-<br> to install the required packages.  Note that installing the gtk3 development package will also install
-its dependencies (there may be many!). 
-<br>   
-<br>        
-Run<br>
-<code>cmake .<br>
+</code></p>
+<p>Other packages will also be installed to meet all the dependencies.</p>
+<p>The package names used above apply for Debian derived distributions and may be different on other distributions.</p> 
+
+<h2>Building the PLTS code from github</h2>
+
+<p>The PLTS gui is hosted on <a href="https://github.com/PeterOGB/PLTS4" target="github">github</a> </p>
+       
+To buid the PLTS run<br>
+<code>
+git clone https://github.com/PeterOGB/PLTS4.git<br>
+cd PLTS4<br>
+cmake .<br>
 make
 </code>
-<br>
-to build the executable.   
-<br>   
-<br>        
-Run<br>
+<p>The PLTS can be run from the build directory or installed in /usr/local/ </p>       
+<p>Run<br>
 <code>sudo make install<br>
 </code>
 <br>
-to place the executable into /usr/local/bin and other resources into /usr/local/share/803-Resources   
+to place the executable into /usr/local/bin and other resources into /usr/local/share/803-Resources   </p>
     
 <h1>A tour of the GUI </h1>
 

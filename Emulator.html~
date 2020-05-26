@@ -30,11 +30,10 @@ Development if this version of the 803 Emulator was prompted by the release of t
  versions of the Pi had supported OpenGL ES 2 in full screen mode but this was the first version to support openGL ES 3 and 
  to provide integration with Xwindows so that an open GL ES scene can be rendered in a Gtk+ window.</p>
 
-<p>There have been many previous version (stretching back over 30 years) using a variety of graphics libraries to 
-draw the numerous components of the machine.  In respect of the number of machine components included, the 
-current version is actually a big step backwards!   </p>
+<p>There have been many previous version of the 803 Emulator stretching back over 30 years. They used a variety of different graphics libraries to 
+draw the numerous components of the machine.  In respect of the number of machine components included, the current version is actually a big step backwards!   </p>
 <br clear="all">
-<p>This is last version that was based on GTK2:</p>
+<p>This is last version that was based on GTK2 and you can see there are many more components included:</p>
 <img src="OldEmulator1.png" width="100%" height="100%" alt="">
 <br clear="all">
 
@@ -61,6 +60,8 @@ Calcomp plotter.</p>
 <code>sudo apt install build-essentials automake autogen libtool git cmake libgtk-3-dev libgles2-mesa-dev libasound2-dev libiberty-dev
 </code>
 </p>  
+<p>Other packages will also be installed to meet all the dependencies.</p>
+<p>The package names used above apply for Debian derived distributions and may be different on other distributions.</p>
 
 <h3>Building CGLM</h3>
     
@@ -78,8 +79,6 @@ sudo make install<br>
 sudo ldconfig<br>
 </code>
 
-<p>The package names used above apply for Debian derived distributions and may be different on other distributions.</p>
- 
 <h2>Getting the emulator code from github</h2>
 
 <p>The 803 Emulator is hosted on <a href="https://github.com/PeterOGB/3D803" target="github">github</a>.
@@ -167,7 +166,7 @@ position the hand too exactly.
 
 <h3>Pressing the Operate Bar</h3>
 
-<p>The operate bar (see below) is depressed by simply moving the active hand down over it.  The hand will be vertically 
+<p>The <b>OPERATE</b> bar (see below) is depressed by simply moving the active hand down over it.  The hand will be vertically 
 constrained once the bar is fully pressed.</p>
 
 <h1>The Elliott 803 Operator's Console</h1>
@@ -179,9 +178,9 @@ constrained once the bar is fully pressed.</p>
 failure or brown out.  These were more common in the 1960s.  In normal operation the battery is floating across the battery charger 
 output with the battery charger providing the power needed to actually run the 803. </p>
 
-<p>The "Battery On" and "Battery Off" buttons control the mains supply to the battery charger and connect and disconnect the battery to the charger. </p>
-<p>The "Computer On" and "Computer Off" buttons connect and disconnect the battery to the computer.</p>
-<p>The control circuitry keeps the battery connected to the computer during a mains failure, but disconnects then before the battery voltage drops too low.
+<p>The <b>BATTERY ON</b> and <b>BATTERY OFF</b> buttons control the mains supply to the battery charger and connect and disconnect the battery and the charger. </p>
+<p>The <b>COMPUTER ON</b> and <b>COMPUTER OFF</b> buttons connect and disconnect the battery and the computer.</p>
+<p>The control circuitry keeps the battery connected to the computer during a mains failure, but disconnects them before the battery voltage drops too low.
 Although this behavior is modeled inside the emulator it's not obvious because there is no display of the battery charger voltage and current meters in the 
 current release.  These meters will be added in a later release.
 </p>
@@ -191,39 +190,40 @@ current release.  These meters will be added in a later release.
 
 <h2>Control Buttons</h2>
 <img src="ModeAndControl.png" width="290" height="215" alt="">
-<p>The lower three buttons "Read", "Normal" and "Obey" are radio buttons so only one can be pressed at a time.  These determine the action taken 
-when the operate bar is pressed. </p>
+<p>The lower three buttons <b>READ</b>, <b>NORMAL</b> and <b>OBEY</b> are radio buttons so only one can be pressed at a time.  These determine the action taken 
+when the <b>OPERATE</b> bar is pressed. </p>
 <p><b>READ</b> The Instruction set on F1 and N1 of the word generator (see below) is transferred to the instruction register ready to be executed. </p>
 
 <p><b>NORMAL</b> The instruction in the instruction register is executed, and the normal fetch / execute cycle continues.  The machine is said to "running" and 
-the "step by step" lamp is extinguished.</p>
+the <b>STEP BY STEP</b> lamp is extinguished.</p>
 
-<p><b>OBEY</b>After the instruction in the instruction register is executed and the next instruction has been fetched form store, then the machine stops with 
-the "step by step" lamp illuminated.
-Repeatly pressing the Operate Bar will thus execute a program one instruction per-press.</p>
+<p><b>OBEY</b> After the instruction in the instruction register is executed and the next instruction has been fetched form store, then the machine stops with 
+the <b>STEP BY STEP</b> lamp illuminated.
+Repeatly pressing the <b>OPERATE</b> bar will thus execute a program one instruction per-press.</p>
 
-<p>Pressing the OBEY button while the machine is running is the normal way to stop it although pressing READ will have the same effect. </p>
+<p>The normal way to stop the machine when it is running is to press the <b>OBEY</b> button although pressing <b>READ</b> will have the same effect.  The machine will finish the 
+current instruction then stop with the <b>STEP BY STEP</b> lamp illuminated.</p>
 
 <p>The <b>RESET</b> button is pressed to stop the machine if the current instruction cannot be completed for example due to a peripheral fault.</p>
 
 <p>The <b>CLEAR STORE</b> button causes all instructions read from store to be executed as no ops, and for a no op instruction to be written back into the store.  
-In this way setting the machine to run with CLEAR STORE pressed (it is a latching button) will eventually set all locations to all zeros.  This is called a "Clear Store".</p>
+In this way setting the machine to run with <b>CLEAR STORE</b> pressed (it is a latching button) will eventually set all locations to all zeros.  This is called a <b>Clear Store</b>.</p>
 
 <p>The <b>MANUAL DATA</b> button is only active during a "70" instruction. This instruction transfers the value set on the word generator (see below) to the accumulator.  
-If MANUAL DATA is pressed (it is a latching button) the machine will stop with the BUSY lamp illuminated.  This gives the operator a chance to change the word generator 
-value before it is transferred.  The 70 instruction is allowed to finish by either releasing MANUAL DATA or by pressing the Operate Bar.</p>
+If <b>MANUAL DATA</b> is pressed (it is a latching button) the machine will stop with the <b>BUSY</b> lamp illuminated.  This gives the operator a chance to change the word generator 
+value before it is transferred.  The 70 instruction is allowed to finish by either releasing <b>MANUAL DATA</b> or by pressing the <b>OPERATE</b> bar.</p>
 <br clear="all">
 
 <h2>Selected Stop</h2>
 
 <p>In modern terminology this enables a "Hardware Break Point".  In is used in conjunction with the setting on Address 2.  When it is pressed, the machine stops
-immediately before executing either of the instructions in the location set on the Address 2 buttons.  The Operate Bar is used to continue execution.  </p>
+immediately before executing either of the instructions in the location set on the Address 2 buttons.  The <b>OPERATE</b> bar is used to continue execution.  </p>
 
-<h2>Operate Bar</h2>
+<h2>OPERATE bar</h2>
 <img src="operate2.gif" width="320" height="240" alt="">
-<p>As described above this is used in conjunction with READ, NORMAL, OPERATE, MANUAL DATA and SELECTED STOP buttons.</p> 
-<p>It is also used if the machine stops due to a store parity error (PARITY and STEP BY STEP lamps illuminated) or due to a 
-floating point overflow (FLOATING POINT OVERFLOW and STEP BY STEP lamps illuminated. </p> 
+<p>As described above this is used in conjunction with <b>READ</b>, <b>NORMAL</b>, <b>OPERATE</b>, <b>MANUAL DATA</b> and <b>SELECTED STOP</b> buttons.</p> 
+<p>It is also used if the machine stops due to a store parity error (<b>PARITY</b> and <b>STEP BY STEP</b> lamps illuminated) or due to a 
+floating point overflow (<b>FLOATING POINT OVERFLOW</b> and <b>STEP BY STEP</b> lamps illuminated. </p> 
 <p> On the emulator the first condition can never arise (except at power on).
 Continuing a program run after a floating point overflow is unlikely to produce useful numerical results!</p>
 <br clear="all">
@@ -256,8 +256,8 @@ between the instructions.</p>
 <p><b>ADDRESS 2 (N2)</b> The 13 bits of the address for second instruction in a word.  They are labeled with their decimal value.</p>
 
 <p>Each row also has a red release button which sets all the buttons to their up (zero) state.</p>
-<p>The instruction F1 N1 is transferred to the instruction register when the Operate Bar is pressed in READ mode.</p>
-<p>The address N2 is used with the SELECTED STOP button for program debugging.</p>
+<p>The instruction F1 N1 is transferred to the instruction register when the <b>OPERATE</b> bar is pressed in <b>READ</b> mode.</p>
+<p>The address N2 is used with the <b>SELECTED STOP</b> button for program debugging.</p>
 
 <p>The left most bit of F1 is referred to a the "sign bit". Toggling its state is used to release an Algol system wait.  The left most bit of F2 is used to release an Algol data wait.</p>
 <p>F1 is often set to octal 40 (a jump instruction) and F2 is set to a program entry address.</p>
@@ -276,7 +276,7 @@ triggered by pressing and releasing console buttons.  These sound effects were r
 
 <br clear="all">
 <h3>Mains Switching</h3>
-<b>A proper mains isolation switch will be included in a later release.  For now use these buttons to turn the mains supply on and off.</b>
+<p>A proper mains isolation switch will be included in a later release.  For now use these buttons to turn the mains supply on and off.</p>
 
 <h3>Reset View</h3>
 <p>This returns the 3D camera to a default position in front of and pointing at the console.  Use it if you "get lost" and can't see the console. </p>
@@ -334,6 +334,9 @@ Successfully running the compiler for the first time (many years ago now) was a 
 <p>The<a href="http://www.billp.org/ccs/A104/"> A104 manual </a> is available online, and also an excellent
  <a href="http://www.billp.org/ccs/ElliottAlgol/">analysis of its internal operation</a> by Bill Purvis. </p>
  
+<p>If you have used Algol 60 before your attention is drawn to the manual section <a href="http://www.billp.org/ccs/A104/page05.html">ELLIOTT 803 HARDWARE REPRESENTATION</a>
+which lists the conventions used to overcome the limited character set available in Elliott five hole telecode.</p> 
+ 
 <br clear="all">
 <img src="803A104Sigs.png" width="418" height="154" alt=""> 
 <p>I was able to get my own copy of the A104 manual signed by the three authors at a seminar they attended in 2008.  You may recognize the name "C.A.R. Hoare" as
@@ -344,8 +347,8 @@ the inventor of the "Quicksort" algorithm who after leaving Elliotts went on to 
 <h2>Loading the compiler tapes</h2>
 <img src="AlgolTapes.png" width="477" height="274" alt="">
 <p>The compiler comes on two paper tapes, known as "Tape One" and Tape "Two" !   If you follow the "Typical beginning" instructions above, and at step 6 (or 9) use the PLTS to 
-put Tape one into the reader, then after the tape has been read the machine will stop while emitting a steady high pitched tone from the loud speaker so make sure the volume is 
-tuened up sufficiently.  This is called the "System Wait". At this point load Tape Two and then toggle the sign bit (left most button on Function 1 row) on the word generator. 
+put Tape One into thssh e reader, then after the tape has been read the machine will stop while emitting a steady high pitched tone from the loud speaker so make sure the volume is 
+tuened up sufficiently.  This is called the <b>System Wait</b>. At this point load Tape Two and then toggle the sign bit (left most button on Function 1 row) on the word generator. 
 Once the tape is loaded another System Wait is entered and the compiler is ready to read a program. </p>
 <br clear="all">
 <h2>Creating your program tapes</h2>
@@ -369,25 +372,25 @@ FOR A := 1 STEP 1 UNTIL 12 DO
 END'
 </pre>
 
-<p>After you have typed it in and saved it to a file, make sure you remember to upload it into the reader.  Then release the "System Wait" and watch and listen 
+<p>After you have typed it in and saved it to a file, make sure you remember to upload it into the reader.  Then release the <b>System Wait</b> and watch and listen 
 in awe as the compiler does its stuff. </p>
 
-<p>When the program has successfully been compiled and is ready to run, the compiler enters a "Data Wait" which is produces a two tone warble from the loud speaker.  The wait
+<p>When the program has successfully been compiled and is ready to run, the compiler enters a <b>Data Wait</b> which is produces a two tone warble from the loud speaker.  The wait
 is released by toggling the left most button on the Function 2 row of the word generator.</p>
 
 <h2>The Edit/Compile/Run cycle</h2>
 <p>The Algol compiler normally runs in a "Load and Go" mode, with the compiler remaining in store while the compiled program runs.  In such cases when the program finishes the message
-"END OF PROGRAM" is printed and a "System Wait" is entered.  To start compiling the next program simply release the wait.</p>
+"END OF PROGRAM" is printed and a <b>System Wait</b> is entered.  To start compiling the next program simply release the wait.</p>
 <br clear="all">
 <img src="JumpTo7.png" width="437" height="136" alt="">
-<p>However, there are a number of circumstances where the compiler will stop with a "Dynamic Stop" which produces a slightly high pitched tone.  In these cases the compiler must be manually 
-restarted by setting up a "Jump to location 7" instruction on the word generator. The sequence "READ OPERATE NORMAL OPERATE" (which will become second nature) starts the compiler again.</p>
+<p>However, there are a number of circumstances where the compiler will stop with a <b>Dynamic Stop</b> which produces a slightly high pitched tone.  In these cases the compiler must be manually 
+restarted by setting up a "Jump to location 7" instruction on the word generator. The sequence <b>READ</b> <b>OPERATE</b> <b>NORMAL</b> <b>OPERATE</b> (which will become second nature) starts the compiler again.</p>
 <br clear="all">
 <img src="AlgolError2.png" width="816" height="461" alt="">
-<p>When the compiler finds a syntax error in the program being compiled it copies the text following the error to the teleprinter then stops with a "System Wait" to allow the operator 
+<p>When the compiler finds a syntax error in the program being compiled it copies the text following the error to the teleprinter then stops with a <b>System Wait</b> to allow the operator 
 to gently put a mark on the tape in the reader to show the approximate position of the error.  This is the reason the the "Reader Echo" feature is provided in the PLTS, to allow the user to 
-see where the tape stopped after an error.  When the "System Wait" is released the compiler continues to read the program but only checking the syntax for further errors.  At the end of the tape
-the compiler will stop in a "Dynamic Stop".</p>
+see where the tape stopped after an error.  When the <b>System Wait</b> is released the compiler continues to read the program but only checking the syntax for further errors.  At the end of the tape
+the compiler will stop in a <b>Dynamic Stop</b>.</p>
 <p>This example shows where the compiler stopped after detecting the missing "L" in "UNTIL". </p>
 <p>Algol error numbers are listed on <a href="http://www.billp.org/ccs/A104/page35.html">pages 35-37</a> of the manual </p>
 <p>My favourite error is number 49,"Program too large or complex to be compiled at all."   I like that "at all" is added at the end so there can be no doubt about it.</p>
