@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Paper Less Tape Station GUI Version 4 User Guid</title>
+<title>Paper Less Tape Station GUI Version 4 User Guide</title>
 <style>
 code {
   font-family: Consolas,"courier new";
@@ -12,44 +12,44 @@ code {
 }
 </style>
 <style>
-            /* Switch numbering on by adding class "countheads" to h1 */
-            /* Prevent numbering for a single heading via class "nocount" */
-        
-            body {
-                counter-reset: h1counter;
-            }
-            .countheads ~ h1:before {
-                content: counter(h1counter) ".\0000a0\0000a0";
-                counter-increment: h1counter;
-            }         
-            
-            h1 {
-                counter-reset: h2counter;
-            }
-    
-            .countheads ~ h2:before {
-                content: counter(h1counter) "." counter(h2counter) ".\0000a0\0000a0";
-                counter-increment: h2counter;
-            }
+/* Switch numbering on by adding class "countheads" to h1 */
+/* Prevent numbering for a single heading via class "nocount" */
+  
+body {
+    counter-reset: h1counter;
+}
+.countheads ~ h1:before {
+    content: counter(h1counter) ".\0000a0\0000a0";
+    counter-increment: h1counter;
+}         
 
-            h2 {
-                counter-reset: h3counter;
-            }
-    
-            .countheads ~ h3:before {
-                content: counter(h1counter) "." counter(h2counter) "." counter(h3counter) ".\0000a0\0000a0";
-                counter-increment: h3counter;
-            }
-            
-            h3 {
-                counter-reset: h4counter;
-            }
-    
-            .countheads ~ h4:before {
-                content: counter(h1counter) "." counter(h2counter) "." counter(h3counter) "." counter(h4counter) ".\0000a0\0000a0";
-                counter-increment: h4counter;
-            }
-        </style>
+h1 {
+    counter-reset: h2counter;
+}
+ 
+.countheads ~ h2:before {
+    content: counter(h1counter) "." counter(h2counter) ".\0000a0\0000a0";
+    counter-increment: h2counter;
+}
+
+h2 {
+    counter-reset: h3counter;
+}
+ 
+.countheads ~ h3:before {
+    content: counter(h1counter) "." counter(h2counter) "." counter(h3counter) ".\0000a0\0000a0";
+    counter-increment: h3counter;
+}
+
+h3 {
+    counter-reset: h4counter;
+}
+ 
+.countheads ~ h4:before {
+    content: counter(h1counter) "." counter(h2counter) "." counter(h3counter) "." counter(h4counter) ".\0000a0\0000a0";
+    counter-increment: h4counter;
+}
+ </style>
 </head>
 <body>
 <h1 class="countheads"></h1>
@@ -60,24 +60,24 @@ code {
 two tape punches and a teleprinter (for output only), but it actually only has the logic boards installed for one reader and one punch.</p>
 
 <p>Some years ago the "Paper Less Tape Station" (PLTS) was built and connected into the PTS's wiring.  It acts like the logic boards for the second reader and the teleprinter. 
-The PLTS communicates with a Raspberry Pi (RPI) via an opto-isolated RS-232 interface and the RPI provides a GUI to allow paper tape image files to be selected 
-and then uploaded into the virtual second tape reader. Likewise output to the teleprinter is passed up to the RPI where it is displayed in a window.</p>
+The PLTS communicates with a Raspberry Pi (Pi) via an opto-isolated RS-232 interface and the Pi provides a GUI to allow paper tape image files to be selected 
+and then uploaded into the virtual second tape reader. Likewise output to the teleprinter is passed up to the Pi where it is displayed in a window.</p>
 
-<p>Recent enhancements to the PLTS and the PI application have allowed the PI's keyboard to be used to provide online or interactive input to the 803.</p>
+<p>Recent enhancements to the PLTS and the Pi application have allowed the Pi's keyboard to be used to provide online or interactive input to the 803.</p>
 
 <p></p>The 803 emulator also has the PLTS functionality built-in, but in this case the interface is via a network socket (on port address 8038).
 
-<p>This PLTS application can be used to connect to either the real 803 (via a usb to rsr232 interface) or to the emulator via a TCP/IP connection. The communications protocol is identical in both cases.
+<p>This PLTS application can be used to connect to either the real 803 (via a USB-to-RS232 interface) or to the emulator via a TCP/IP connection. The communications protocol is identical in both cases.
 </p>
 
 <h1>Installing the PLTS GUI</h1>
 
 <h2>Installing and Building the dependencies</h2>    
 
-<p>There are a number of tools and libaries that are needed to build the emulator application.</p>
+<p>There are a number of tools and libraries that are needed to build the emulator application.</p>
 
 <p>If you don't already have a C compiler installed on your system, add the 
-"build-essentials" package to the command below.</p>
+"build-essential" package to the command below.</p>
  
 <p>
 <code>sudo apt install gtk+-3.0-dev cmake
@@ -89,7 +89,7 @@ and then uploaded into the virtual second tape reader. Likewise output to the te
 
 <p>The PLTS gui is hosted on <a href="https://github.com/PeterOGB/PLTS4" target="github">github</a> </p>
        
-To buid the PLTS run<br>
+To build the PLTS run<br>
 <code>
 git clone https://github.com/PeterOGB/PLTS4.git<br>
 cd PLTS4<br>
@@ -107,7 +107,7 @@ make
 
 <h1>A tour of the GUI </h1>
 
-<p>The GUI is made up from two windows, one to manage the connection to the 803 or to an emulator, and one to 
+<p>The GUI is made up of two windows, one to manage the connection to the 803 or to an emulator, and one to 
 edit and upload tapes and view teleprinter output.</p>
 
 <h2>The Connection Window</h2>
@@ -129,7 +129,7 @@ edit and upload tapes and view teleprinter output.</p>
 <p>When the "Reader Echo" check button is set, each character read by the 803 is shown in the text area.  This allows the user to monitor the reading of their tapes
 by an 803 program such as the Algol compiler.  So for example when the Algol compiler finds an error in a program the user can see roughly where the error occurred.
 </p>
-<p>When the "Online" check button is set, characters typed into the text area are sent to the 803 or emulator.  This is an advanced feature and it's use is covered in the Emulator manual.</p>
+<p>When the "Online" check button is set, characters typed into the text area are sent to the 803 or emulator.  This is an advanced feature and its use is covered in the Emulator manual.</p>
 
 <h3>Teleprinter Output</h3>
 <p>This is shown with a lilac background.</p>
@@ -149,7 +149,7 @@ This button pops up a standard "file chooser" dialog to allow the selection of a
 This button pops up a "recent chooser" dialog.  It is most useful when a sequence of tape uploads needs to be repeated.
 
 <h4>Tape Upload Progress</h4>
-<p>Due to the way the emulator works tape uploads can be quite slow, so a progress bar is provided to show when an upload is complete.</p>
+<p>Due to the way the emulator works, tape uploads can be quite slow on some platforms, so a progress bar is provided to show when an upload is complete.</p>
 <img src="Uploading.png" width="695" height="72" alt="">
 
 
@@ -164,8 +164,8 @@ Line Feed pair are inserted at the start of each line and are followed by a Figu
 Letter Shift character as appropriate.  Additional Shift characters are inserted where needed.  16 blanks (displayed as "_") are added to the start and end of the telecode data.</p>
 
 <h4>Comments</h4>
-<p>The editor supports the addition of comment text which is not subject to the telecode rules above and is NOT uploaded to the 803/emulator.</p>
-<p>Text placed between [ and ] is highlighed in Blue to show it is a comment.  Typing [ or ] will insert a [] pair to ensure comments are always balanced.  
+<p>The editor supports the addition of comment text which is not subject to the telecode rules above and is NOT uploaded to the real 803 or to the emulator.</p>
+<p>Text placed between [ and ] is highlighted in Blue to show it is a comment.  Typing [ or ] will insert a [] pair to ensure comments are always balanced.  
 A comment block can only be deleted if it is empty.</p>
 <p>A selected block of text can be wrapped in [ ] by pressing F1.   F2 will remove the outer pair of[ ] from a highlighted comment block, but only if the comment contains no non-telecode characters. </p>
 

@@ -66,16 +66,16 @@ img {
 <p></p>
 
 <h1>History</h1>
-<p>
-Development if this version of the 803 Emulator was prompted by the release of the  
+<p> 
+Development of this version of the 803 Emulator was prompted by the release of the  
  <a href="https://www.raspberrypi.org/products/raspberry-pi-4-model-b/">Raspberry Pi 4</a> in June 2019.  Earlier 
  versions of the Pi had supported OpenGL ES 2 in full screen mode but this was the first version to support openGL ES 3 and 
- to provide integration with Xwindows so that an open GL ES scene can be rendered in a Gtk+ window.</p>
+ to provide integration with X Windows so that an open GL ES scene can be rendered in a GTK window.</p>
 
 <p>There have been many previous version of the 803 Emulator stretching back over 30 years. They used a variety of different graphics libraries to 
 draw the numerous components of the machine.  In respect of the number of machine components included, the current version is actually a big step backwards!   </p>
 <br clear="all">
-<p>This is last version that was based on GTK2 and you can see there are many more components included:</p>
+<p>This is the last version that was based on GTK2 and you can see there are many more components included:</p>
 <img src="OldEmulator1.png" width="100%" height="100%" alt="">
 <br clear="all">
 
@@ -93,13 +93,13 @@ Calcomp plotter.</p>
 
 <h2>Installing and Building the dependencies</h2>    
 
-<p>There are a number of tools and libaries that are needed to build the emulator application.</p>
+<p>There are a number of tools and libraries that are needed to build the emulator application.</p>
 
 <p>If you don't already have a C compiler installed on your system, add the 
-"build-essentials" package to the command below.</p>
+"build-essential" package to the command below.</p>
 
 <p>
-<code>sudo apt install build-essentials automake autogen libtool git cmake libgtk-3-dev libgles2-mesa-dev libasound2-dev libiberty-dev
+<code>sudo apt install automake autogen libtool git cmake libgtk-3-dev libgles2-mesa-dev libasound2-dev libiberty-dev
 </code>
 </p>  
 <p>Other packages will also be installed to meet all the dependencies.</p>
@@ -107,7 +107,7 @@ Calcomp plotter.</p>
 
 <h3>Building CGLM</h3>
     
-One of the required libaries cannot be installed from a package. The
+One of the required libraries cannot be installed from a package. The
 <a href="https://cglm.readthedocs.io/en/latest/">OpenGL Mathematics (glm) for C</a>  library needs to be built from source.
 
 <code><br>
@@ -145,7 +145,8 @@ make
 
 
 <h1>User Interface</h1>
-
+<img src="OpConsole.png" width="1030" height="799" alt="">
+<br clear="all">
 <h2>3D navigation</h2>
 
 <p>The position and viewing direction of the 3D camera is controlled by a combination of keyboard key presses and mouse movements.
@@ -175,13 +176,13 @@ motion may not be the best when using a mouse.  Let me know if you think it coul
 
 <h2>Using two hands</h2>
 
-<p>Controlling two pointer like objects on the screen takes a bit of getting used to.  There is still only one mouse 
-pointer and most of the time one of the hands (referred to below as the active hand) is tracking it's position so 
+<p>Controlling two pointer-like objects on the screen takes a bit of getting used to.  There is still only one mouse 
+pointer and most of the time one of the hands (referred to below as the active hand) is tracking its position so 
 the mouse pointer itself can be hidden.</p>
 
 <p>The active hand is constrained to stay over the console so the mouse pointer only becomes visible when the 
 hand reaches an edge and stops tracking the mouse.  When the mouse pointer moves back over the console the active hand 
-starts to track the mouse again, starting form it's previous position.  This prevents any unrealistic jumping around 
+starts to track the mouse again, starting from its previous position.  This prevents any unrealistic jumping around 
 the screen by the hands.</p>
 
 <p>To avoid having to deal with situations where the two hands would touch, the inactive hand is automatically moved 
@@ -203,7 +204,7 @@ left or right to keep the left hand to the left of the right hand or to keep the
 
 <h3>Pressing Buttons</h3>
 
-The hands have a slight "snap to button" behavior to make it easier to press the required button without having to
+The hands have a slight "snap to button" behaviour to make it easier to press the required button without having to
 position the hand too exactly.
 
 <h3>Pressing the Operate Bar</h3>
@@ -223,11 +224,11 @@ output with the battery charger providing the power needed to actually run the 8
 <p>The <b>BATTERY ON</b> and <b>BATTERY OFF</b> buttons control the mains supply to the battery charger and connect and disconnect the battery and the charger. </p>
 <p>The <b>COMPUTER ON</b> and <b>COMPUTER OFF</b> buttons connect and disconnect the battery and the computer.</p>
 <p>The control circuitry keeps the battery connected to the computer during a mains failure, but disconnects them before the battery voltage drops too low.
-Although this behavior is modeled inside the emulator it's not obvious because there is no display of the battery charger voltage and current meters in the 
+Although this behaviour is modelled inside the emulator, it's not obvious because there is no display of the battery charger voltage and current meters in the 
 current release.  These meters will be added in a later release.
 </p>
 
-<p>The dymo tape warning about switching the battery off first was attached to the console of the 803 at Loughborough Grammar School.</p>
+<p>The Dymo tape warning about switching the battery off first was attached to the console of the 803 at Loughborough Grammar School.</p>
 <br clear="all">
 
 <h2>Control Buttons</h2>
@@ -239,9 +240,9 @@ when the <b>OPERATE</b> bar is pressed. </p>
 <p><b>NORMAL</b> The instruction in the instruction register is executed, and the normal fetch / execute cycle continues.  The machine is said to "running" and 
 the <b>STEP BY STEP</b> lamp is extinguished.</p>
 
-<p><b>OBEY</b> After the instruction in the instruction register is executed and the next instruction has been fetched form store, then the machine stops with 
+<p><b>OBEY</b> After the instruction in the instruction register is executed and the next instruction has been fetched from store, then the machine stops with 
 the <b>STEP BY STEP</b> lamp illuminated.
-Repeatly pressing the <b>OPERATE</b> bar will thus execute a program one instruction per-press.</p>
+Repeatedly pressing the <b>OPERATE</b> bar will thus execute a program one instruction per press.</p>
 
 <p>The normal way to stop the machine when it is running is to press the <b>OBEY</b> button although pressing <b>READ</b> will have the same effect.  The machine will finish the 
 current instruction then stop with the <b>STEP BY STEP</b> lamp illuminated.</p>
@@ -265,7 +266,7 @@ immediately before executing either of the instructions in the location set on t
 <img src="operate2.gif" width="320" height="240" alt="">
 <p>As described above this is used in conjunction with <b>READ</b>, <b>NORMAL</b>, <b>OPERATE</b>, <b>MANUAL DATA</b> and <b>SELECTED STOP</b> buttons.</p> 
 <p>It is also used if the machine stops due to a store parity error (<b>PARITY</b> and <b>STEP BY STEP</b> lamps illuminated) or due to a 
-floating point overflow (<b>FLOATING POINT OVERFLOW</b> and <b>STEP BY STEP</b> lamps illuminated. </p> 
+floating point overflow (<b>FLOATING POINT OVERFLOW</b> and <b>STEP BY STEP</b> lamps illuminated). </p> 
 <p> On the emulator the first condition can never arise (except at power on).
 Continuing a program run after a floating point overflow is unlikely to produce useful numerical results!</p>
 <br clear="all">
@@ -273,7 +274,7 @@ Continuing a program run after a floating point overflow is unlikely to produce 
 <img src="Indicators.png" width="169" height="550" alt="">
 <p><b>PARITY</b> All reads from the 803's core store are parity checked.  If this check fails the lamp illuminates and the machine stops.</p>
 
-<p><b>BLOCK TRANSFER</b> This lamp comes on it two situations.  1) When a block of data is being transfered between the core store and a peripheral 
+<p><b>BLOCK TRANSFER</b> This lamp comes on it two situations.  1) When a block of data is being transferred between the core store and a peripheral 
 2) When the CPU is executing a long instruction such as a shift or multiply. </p>
 
 <p><b>BUSY</b> All peripherals have the ability to make the CPU wait until they are ready.  While the CPU is waiting this lamp is illuminated.  </p>
@@ -291,11 +292,11 @@ Continuing a program run after a floating point overflow is unlikely to produce 
  Each group of 19 bits is further divided into a 6 bit group and a 13 bit group.</p>
 <p>The 6 bit groups are an op-codes and the 13 bit groups are an address and together they make up a single instruction.</p>
 <p>The 39 buttons of the word generator are laid out to match this structure.</p>
-<p><b>FUNCTION 1 (F1)</b> The 6 bits of the opcode  for first instruction in a word.  They are labeled with octal digit values.</p>
-<p><b>ADDRESS 1 (N1)</b> The 13 bits of the address for first instruction in a word.  They are labeled with their decimal value.  This row also has a red button (labeled B) for the bit 
+<p><b>FUNCTION 1 (F1)</b> The 6 bits of the opcode  for first instruction in a word.  They are labelled with octal digit values.</p>
+<p><b>ADDRESS 1 (N1)</b> The 13 bits of the address for first instruction in a word.  They are labelled with their decimal value.  This row also has a red button (labelled B) for the bit 
 between the instructions.</p>
-<p><b>FUNCTION 2 (F2)</b> The 6 bits of the opcode  for second instruction in a word.  They are labeled with octal digit values.</p>
-<p><b>ADDRESS 2 (N2)</b> The 13 bits of the address for second instruction in a word.  They are labeled with their decimal value.</p>
+<p><b>FUNCTION 2 (F2)</b> The 6 bits of the opcode  for second instruction in a word.  They are labelled with octal digit values.</p>
+<p><b>ADDRESS 2 (N2)</b> The 13 bits of the address for second instruction in a word.  They are labelled with their decimal value.</p>
 
 <p>Each row also has a red release button which sets all the buttons to their up (zero) state.</p>
 <p>The instruction F1 N1 is transferred to the instruction register when the <b>OPERATE</b> bar is pressed in <b>READ</b> mode.</p>
@@ -355,7 +356,7 @@ follows the steps taken at each word time by the real machine. </p>
 <h1>Beginning Sequence</h1>
 
 <p>Included in the original 803 documentation is T.I.S. 57.2.8.64 titled "GENERAL OPERATIONS AND MAINTENANCE
-OF THE 803B COMPUTER".  It contains a hand drawn labeled illustration of the operators console, and this has been 
+OF THE 803B COMPUTER".  It contains a hand drawn labelled illustration of the operators console, and this has been 
 recreated using a screen shot from the emulator.  </p>
 
 <p>"Learner" operators should take particular note in the bottom right hand corner :-) </p>
@@ -381,7 +382,7 @@ which lists the conventions used to overcome the limited character set available
  
 <br clear="all">
 <img src="803A104Sigs.png" width="418" height="154" alt=""> 
-<p>I was able to get my own copy of the A104 manual signed by the three authors at a seminar they attended in 2008.  You may recognize the name "C.A.R. Hoare" as
+<p>I was able to get my own copy of the A104 manual signed by the three authors at a seminar they attended in 2008.  You may recognise the name "C.A.R. Hoare" as
 the inventor of the "Quicksort" algorithm who after leaving Elliotts went on to become a famous computer scientist.</p>
  <br clear="all">
  
@@ -390,7 +391,7 @@ the inventor of the "Quicksort" algorithm who after leaving Elliotts went on to 
 <img src="AlgolTapes.png" width="477" height="274" alt="">
 <p>The compiler comes on two paper tapes, known as "Tape One" and Tape "Two" !   If you follow the "Typical beginning" instructions above, and at step 6 (or 9) use the PLTS to 
 put Tape One into thssh e reader, then after the tape has been read the machine will stop while emitting a steady high pitched tone from the loud speaker so make sure the volume is 
-tuened up sufficiently.  This is called the <b>System Wait</b>. At this point load Tape Two and then toggle the sign bit (left most button on Function 1 row) on the word generator. 
+turned up sufficiently.  This is called the <b>System Wait</b>. At this point load Tape Two and then toggle the sign bit (left most button on Function 1 row) on the word generator. 
 Once the tape is loaded another System Wait is entered and the compiler is ready to read a program. </p>
 <br clear="all">
 <h2>Creating your program tapes</h2>
