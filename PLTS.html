@@ -210,12 +210,20 @@ The "Quit" button is self explanatory, but note that no prompts are produced if 
 output on the teleprinter.</p>
 <img src="PLTSmainText.png" width="1342" height="886" alt="">
 
-<h2>Making a programme tape</h2>
+<h2>Making a program tape</h2>
 
-<h2>Compiling your programme</h2>
+<p>Before starting to type a new program into the tape editor, press the "New Tape" button to clear any existing text.  Then Press "Set Tape Name" to give the tape file a name and location.
+Periodically press "Save to Files" to update the saved versions.</p>
+
+<p>The "Include Old Tape" button opens a file selector, and the selected file is inserted at the current cursor position.  UTF-8 files will be stripped of all characters that do not have an
+equivalent in the current telecode, except where they appear in inside comments.</p>
+
+<p>NOTE: There are no "undo" features. Also there is no warning of unsaved changes when pressing "New Tape" or when quitting.</p>
+
+<h2>Compiling your program</h2>
 
 <p>The next example shows an Algol program has been typed into the tape editor and saved with the name "roots".  This has been compiled with the Algol Compiler which detected an 
-error in the programme.  The teleprinter output shows the error number ( 17 ) and the text immediately after the error.</p>
+error in the program.  The teleprinter output shows the error number ( 17 ) and the text immediately after the error.</p>
 <p>From the 803 Algol manual : 
 <pre>
 17 (a) No end or semicolon after statement in compound tail,
@@ -223,9 +231,14 @@ error in the programme.  The teleprinter output shows the error number ( 17 ) an
    (c) Impermissible beginning to statement.</p>
 </pre>
 <img src="AlgolError.png" width="1342" height="886" alt="">
+<br clear="all">
 
 <h1>Licence</h1>
+<h2>This document</h2>
+<p xmlns:dct="http://purl.org/dc/terms/" xmlns:cc="http://creativecommons.org/ns#" class="license-text"><a rel="cc:attributionURL" href="https://github.com/PeterOGB/Instructions"><span rel="dct:title">Paper Less Tape Station GUI Version 4 User Guide</span></a> by <span rel="cc:attributionName">Peter Onion</span> CC BY-NC-SA 4.0<a href="https://creativecommons.org/licenses/by-nc-sa/4.0"><img style="height:22px!important;margin-left: 3px;vertical-align:text-bottom;" src="https://search.creativecommons.org/static/img/cc_icon.svg" /><img  style="height:22px!important;margin-left: 3px;vertical-align:text-bottom;" src="https://search.creativecommons.org/static/img/cc-by_icon.svg" /><img  style="height:22px!important;margin-left: 3px;vertical-align:text-bottom;" src="https://search.creativecommons.org/static/img/cc-nc_icon.svg" /><img  style="height:22px!important;margin-left: 3px;vertical-align:text-bottom;" src="https://search.creativecommons.org/static/img/cc-sa_icon.svg" /></a></p>
 
+<h2>The Software</h2>
+<p>
+<a href="https://www.gnu.org/licenses/gpl-3.0.html">GNU GPL V3</a> Copyright © 2020 Peter Onion</p>
 
-<p>Copyright © 2020 Peter Onion</p>
 </body>
