@@ -214,6 +214,87 @@ position the hand too exactly.
 <p>The <b>OPERATE</b> bar (see below) is depressed by simply moving the active hand down over it.  The hand will be vertically 
 constrained once the bar is fully pressed.</p>
 
+<h2>Command line options</h2>
+
+<pre>
+803 --help
+Usage:
+  803 [OPTION…] - Elliott 803 Emulator
+
+Help Options:
+  -?, --help               Show help options
+  --help-all               Show all help options
+  --help-gtk               Show GTK+ Options
+
+Application Options:
+  -l, --loadcorefile       Load the core store from file.
+  -s, --savecorefile       Save the core store to file.
+  -w, --windowsize         Window size as widthxheight.
+  -h, --handswap           Use old (right click) hand swap method.
+  -D, --device             Select ALSA output device.
+  --display=DISPLAY        X display to use
+</pre>
+
+<h3>Loading and saving core files</h3>
+<p>These options are used to load and save alternative core store images.  </p>
+<h3>Window sizing</h3>
+<p>The default window is 800x600 pixels and (currently) cannot be resized.  Use this option to change the window size e.g. "-w 1024x768" .</p>
+
+<h3>Hand swapping</h3>
+<p>Earlier versions of the emulator used the right mouse button to toggle between left and right hands.  This option reverts to that behaviour.</p>
+
+<h3>Sound device selection</h3>
+<p>The emulator depends on the sound output running at 48kHz sampling to maintain the correct instruction execution rate.  It has been found that some video/audio conferencing tools 
+can cause the sample rate to change on already opened sound streams.  This is probably a bug !  When it happens the rate changes from 48kHz to 44.1kHz making the emulator run ~8% slow.
+The same effect has been observed with sound from other applications causing speech and music to sound "flat".</p>
+<p>This option has been added to allow an alternative output device to be used if one is available.</p>
+
+<p>  ALSA device naming is a bit archaic. Use aplay -L to get a list of the available ALSA devices.  The list below shows an edited version of the output 
+with HDMI and surround sound and other inappropriate devices removed (for brevity).
+Suitable device names are shown in <b>bold</b> .  Names starting with "plug" can be used if the underlying hardware does not support 48kHz signed 16 bit little endian sampling.  This is why
+"hw:CARD=M2X2,DEV=0" is not in bold as it only supports 32 bit samples.
+ </p>
+<pre>aplay -L
+<b>default</b>
+    Playback/recording through the PulseAudio sound server
+null
+    Discard all samples (playback) or generate zero samples (capture)
+pulse
+    PulseAudio Sound Server
+sysdefault:CARD=PCH
+    HDA Intel PCH, ALC221 Analog
+    Default Audio Device
+front:CARD=PCH,DEV=0
+    HDA Intel PCH, ALC221 Analog
+    Front speakers
+.....
+<b>hw:CARD=PCH,DEV=0</b>
+    HDA Intel PCH, ALC221 Analog
+    Direct hardware device without any conversions
+<b>plughw:CARD=PCH,DEV=0</b>
+    HDA Intel PCH, ALC221 Analog
+    Hardware device with all software conversions
+.....
+<b>hw:CARD=Pro,DEV=0</b>
+    SB X-Fi Surround 5.1 Pro, USB Audio
+    Direct hardware device without any conversions
+<b>plughw:CARD=Pro,DEV=0</b>
+    SB X-Fi Surround 5.1 Pro, USB Audio
+    Hardware device with all software conversions
+....    
+hw:CARD=M2X2,DEV=0
+    M-Track 2X2, USB Audio
+    Direct hardware device without any conversions
+<b>plughw:CARD=M2X2,DEV=0</b>
+    M-Track 2X2, USB Audio
+    Hardware device with all software conversions
+</pre>
+
+<p>See https://www.volkerschatz.com/noise/alsa.html for some more info on ALSA, and a useful tool called "<a href="https://www.volkerschatz.com/noise/alsa.html#alsacap">alsacap"</a> which gives more details on each devices capabilities
+</p>
+
+
+
 <h1>The Elliott 803 Operator's Console</h1>
 
 <h2>Power Buttons</h2>
