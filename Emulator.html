@@ -107,11 +107,10 @@ Calcomp plotter.</p>
 <p>Other packages will also be installed to meet all the dependencies.</p>
 <p>The package names used above apply for Debian derived distributions and may be different on other distributions.</p>
 
-<h3>Building CGLM</h3>
-    
-One of the required libraries cannot be installed from a package. The
-<a href="https://cglm.readthedocs.io/en/latest/">OpenGL Mathematics (glm) for C</a>  library needs to be built from source.
+<p>Two of the required libraries cannot be installed from packages.</p>
 
+<h3>Building and installing CGLM</h3>
+<p> The <a href="https://cglm.readthedocs.io/en/latest/">OpenGL Mathematics (glm) for C</a>  library needs to be built from source.</p>
 <code><br>
 git clone https://github.com/recp/cglm.git<br>
 cd cglm<br>
@@ -122,6 +121,21 @@ make check<br>
 sudo make install<br>
 sudo ldconfig<br>
 </code>
+
+<h3>Installing cgltf</h3>
+
+<p><a href="https://www.khronos.org/gltf/">glTF</a> is the file format used to export the various 3D object models from <a href="https://www.blender.org/">blender</a> and to import them into the emulator.
+</p>
+<p><a href="https://github.com/jkuhlmann/cgltf">cgltf</a> is a "Single-file glTF 2.0 loader and writer written in C99"</p>
+<code>
+git clone https://github.com/jkuhlmann/cgltf.git
+cd cgltf
+sudo cp cgltf.h /usr/local/include
+</code>
+
+
+
+
 
 <h2>Building the emulator code from github</h2>
 
@@ -386,7 +400,7 @@ between the instructions.</p>
 <p>The address N2 is used with the <b>SELECTED STOP</b> button for program debugging.</p>
 
 <p>The left most bit of F1 is referred to a the "sign bit". Toggling its state is used to release an Algol system wait.  The left most bit of F2 is used to release an Algol data wait.</p>
-<p>F1 is often set to octal 40 (a jump instruction) and F2 is set to a program entry address.</p>
+<p>F1 is often set to octal 40 (a jump instruction) and N1 is set to a program entry address.</p>
 <br clear="all">
 
 <h2>Volume Control and Sound Effects</h2>
@@ -397,7 +411,11 @@ that bit set the loud speaker is turned on for the duration of the instruction. 
 triggered by pressing and releasing console buttons.  These sound effects were recorded by operating buttons on a real 803 console.</p>
 <p>The volume control is adjusted by pressing on it and moving the hand.</p>
 <br clear="all">
-<h2>Extra Buttons</h2>
+
+
+<h1>Calcomp Plotter </h1>
+
+<h1>Extra Buttons</h1>
 <img src="Widgets.png" width="365" height="87" alt="">
 
 <br clear="all">
@@ -470,14 +488,14 @@ the inventor of the "Quicksort" algorithm who after leaving Elliotts went on to 
  <br clear="all">
  
 
-<h2>Loading the compiler tapes</h2>
+<h2>Loading the Algol compiler tapes</h2>
 <img src="AlgolTapes.png" width="477" height="274" alt="">
 <p>The compiler comes on two paper tapes, known as "Tape One" and Tape "Two" !   If you follow the "Typical beginning" instructions above, and at step 6 (or 9) use the PLTS to 
 put Tape One into the reader, then after the tape has been read the machine will stop while emitting a steady high pitched tone from the loud speaker so make sure the volume is 
 turned up sufficiently.  This is called the <b>System Wait</b>. At this point load Tape Two and then toggle the sign bit (left most button on Function 1 row) on the word generator. 
 Once the tape is loaded another System Wait is entered and the compiler is ready to read a program. </p>
 <br clear="all">
-<h2>Creating your program tapes</h2>
+<h2>Creating your Algol program tapes</h2>
 
 <p>See the Paper Less Tape Station User Manual for instructions on using the Tape Editor. Here is a suggestion for your first Algol 60 program:</p>
 
@@ -522,6 +540,70 @@ the compiler will stop in a <b>Dynamic Stop</b>.</p>
 <p>My favourite error is number 49,"Program too large or complex to be compiled at all."   I like that "at all" is added at the end so there can be no doubt about it.</p>
 
 <br clear="all">
+
+<h1>Using the HCode Compiler</h1>
+<p>HCode was developed by the Research Division of Brush Electrical Engineering.  It has similarities with other "autocodes" of the era. 
+ The <a href="https://www.peteronion.org.uk/803Documentation/HCODE_manual.pdf">HCode manual</a> is available as is an original 
+<a href="https://www.peteronion.org.uk/803Documentation/HCODE_intro.pdf">tutorial document</a> </p>
+
+<h2>Loading the HCode compiler tape</h2>
+<p>The compiler comes on single paper tape.  If you follow the "Typical beginning" instructions above, and at step 6 (or 9) use the PLTS to 
+put the HCode tape into the reader, then after the tape has been read the machine will stop while emitting a steady high pitched tone from the loud speaker so make sure the volume is 
+turned up sufficiently.  This is called a <b>Dynamic Stop</b>.</p>
+
+<h2>Creating your HCode program tapes</h2>
+
+<p>See the Paper Less Tape Station User Manual for instructions on using the Tape Editor. Here is a suggestion for your first HCode program:</p>
+
+<pre>
+:SETR(MAIN)
+:SETS(R,C)
+
+:DEFINE(MAIN)
+'
+    '
+1 £ C
+:DO(12)
+C:3
+1:ON(C)
+:REPEAT
+
+1 £ R
+:DO(12)
+'
+'
+R:3
+1 £ C
+:DO(12)
+R*C:3
+1:ON(C)
+:REPEAT
+
+1:ON(R)
+:REPEAT
+'
+'
+:STOP
+:CLOSE
+
+:START(0,MAIN)
+::
+</pre>
+
+<h2>The Edit/Compile/Run cycle</h2>
+
+<p>The HCode compiler remains resident in store while programs are run, so there is no need to reload the compiler before each compilation.
+The compiler is started by setting a "Jump to 512" ( 40 512 ) on the F1/N1 buttons of the Word Generator (see earlier Word Generator section) followed by a Read/Operate/Normal/Operate sequence.</p>
+
+<p>When the compiler reads the final "::" it will enter a "wait" state.  The compiled program is then run by by setting a "Jump to 513" ( 40 513 ) on the F1/N1 buttons of the Word Generator 
+(see earlier Word Generator section) followed by a Read/Operate/Normal/Operate sequence. </p>
+
+<p>When the running programme reaches the ":STOP" instruction the machine enters a "dynamic stop".  The programme can be re-run by jumping to 513 again, to the compiler can be restarted by jumping to 512. </p>
+
+<h2>HCode Error messages</h2>
+<p>HCode's error reporting is very simple. On detecting an error the compiler stops reading the input tape and outputs a repeated single letter code on the teleprinter.  The meaning of the code 
+has to be looked up inthe HCode manual.</p>
+
 
 <h1>Known Problems</h1>
 <h2>Overlapping windows</h2>
